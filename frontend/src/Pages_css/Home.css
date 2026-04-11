@@ -1,0 +1,314 @@
+/* --- Home Page Specific Styles --- */
+.home-page-unique {
+  /* Variables Moved inside Parent to avoid global leak */
+  --bg-deep: #0f172a;
+  --text-main: #f8fafc;
+  --text-dim: #94a3b8;
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --accent-blue: #7dd3fc;
+  --button-soft: #a5f3fc;
+  --button-hover: #faedcd;
+  --easy-color: #22c55e;
+  --medium-color: #eab308;
+  --hard-color: #ef4444;
+
+  /* Basic Setup */
+  height: 100vh;
+  background-color: var(--bg-deep);
+  background-image: radial-gradient(circle at 50% -20%, #1e293b, #0f172a);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* All children selectors now prefixed with the unique parent */
+.home-page-unique .main-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* --- Sidebar Styling --- */
+.home-page-unique .side-panel {
+    width: 280px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--glass-border);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.home-page-unique .side-option {
+    padding: 16px 24px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.home-page-unique .side-option:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.home-page-unique .side-option.active {
+    background: var(--glass-bg);
+    color: var(--accent-blue);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Content Area --- */
+.home-page-unique .content-area {
+    flex: 1;
+    padding: 60px;
+    overflow-y: auto;
+    background: radial-gradient(circle at top right, rgba(125, 211, 252, 0.05), transparent 40%);
+}
+
+.home-page-unique .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+    color: var(--text-main);
+}
+
+/* --- Stats Card Arrangement --- */
+.home-page-unique .stats-display-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    border-radius: 40px;
+    padding: 50px;
+    margin-bottom: 40px;
+    animation: floatLightHome 8s ease-in-out infinite;
+}
+
+@keyframes floatLightHome {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.home-page-unique .stats-info {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+/* Progress Circle */
+.home-page-unique .circle-progress {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 8px solid var(--button-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(165, 243, 252, 0.15);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.home-page-unique .total-count { font-size: 2.8rem; font-weight: 800; color: var(--accent-blue); }
+.home-page-unique .sub-text { font-size: 0.8rem; text-transform: uppercase; opacity: 0.6; letter-spacing: 1px; }
+
+/* Stats Details */
+.home-page-unique .stats-details {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.home-page-unique .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.home-page-unique .dot { width: 12px; height: 12px; border-radius: 50%; }
+.home-page-unique .dot.easy { background: var(--easy-color); box-shadow: 0 0 10px var(--easy-color); }
+.home-page-unique .dot.medium { background: var(--medium-color); box-shadow: 0 0 10px var(--medium-color); }
+.home-page-unique .dot.hard { background: var(--hard-color); box-shadow: 0 0 10px var(--hard-color); }
+
+.home-page-unique .label { width: 80px; color: var(--text-dim); }
+.home-page-unique .value { font-weight: 700; color: white; }
+
+/* --- Buttons --- */
+.home-page-unique .stats-actions {
+    display: flex;
+    gap: 20px;
+}
+
+.home-page-unique .action-btn {
+    padding: 16px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.home-page-unique .update-btn { background: var(--button-soft); color: #0f172a; }
+.home-page-unique .update-btn:hover { background: var(--button-hover); transform: translateY(-3px); }
+
+.home-page-unique .fill-btn { background: transparent; color: var(--accent-blue); border: 1px solid var(--glass-border); }
+.home-page-unique .fill-btn:hover { background: rgba(255, 255, 255, 0.05); }
+
+/* --- Leaderboard Table --- */
+.home-page-unique .table-container {
+    background: var(--glass-bg);
+    border-radius: 30px;
+    border: 1px solid var(--glass-border);
+    padding: 25px;
+    overflow: hidden;
+}
+
+.home-page-unique .leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.home-page-unique .leaderboard-table th {
+    text-align: left;
+    padding: 15px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.home-page-unique .leaderboard-table td {
+    padding: 20px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    color: var(--text-main);
+}
+
+.home-page-unique .rank-cell { font-weight: 800; font-size: 1.1rem; }
+.home-page-unique .name-cell { color: var(--accent-blue); font-weight: 600; }
+.home-page-unique .solved-cell { font-weight: 700; }
+
+/* Modal Overlay (Background Blur) */
+.home-page-unique .modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Modal Box */
+.home-page-unique .modal-content {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 40px;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.home-page-unique .modal-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--accent-blue);
+}
+
+.home-page-unique .modal-content p {
+    color: var(--text-dim);
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+/* Input inside Modal */
+.home-page-unique .modal-content input {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    color: white;
+    margin-bottom: 25px;
+    outline: none;
+}
+
+.home-page-unique .modal-content input:focus {
+    border-color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Modal Buttons */
+.home-page-unique .modal-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* --- Home Link Styling --- */
+.profile-page-unique .home-link {
+    display: block;
+    text-align: left;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    width: fit-content;
+}
+
+.profile-page-unique .home-link:hover {
+    color: var(--button-hover);
+    transform: translateX(-5px);
+}
+
+/* Rest of the CSS remains same... */
+
+.home-page-unique .modal-actions button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+
+.home-page-unique .cancel-btn {
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid var(--glass-border) !important;
+}
+
+.home-page-unique .confirm-btn {
+    background: var(--button-soft);
+    color: #0f172a;
+}
+
+.home-page-unique .confirm-btn:hover {
+    background: var(--button-hover);
+}

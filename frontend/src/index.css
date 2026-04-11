@@ -1,0 +1,93 @@
+/* Google Fonts: Quicksand (Soft) & Jost (Clean) */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Jost:wght@300;400;500&display=swap');
+
+:root {
+  /* Lofi Core - Warm & Earthy */
+  --bg-lofi: #2c2421;          /* Espresso Dark (Main Background) */
+  --bg-soft: #3d332f;          /* Mocha (Card Background) */
+  --primary-warm: #d4a373;     /* Caramel (Primary Buttons/Links) */
+  --secondary-cream: #faedcd;  /* Vanilla (Text/Highlights) */
+  --accent-olive: #ccd5ae;     /* Sage Green (Easy Stats) */
+  --accent-terracotta: #e9967a;/* Muted Orange (Medium Stats) */
+  --accent-wine: #9e2a2b;      /* Dark Rose (Hard Stats) */
+  
+  /* Text & Details */
+  --text-main: #fefae0;        /* Retro Cream White */
+  --text-dim: #a98467;         /* Coffee Brown (Muted Text) */
+  --glass-white: rgba(250, 237, 205, 0.05);
+  --border-sepia: rgba(169, 132, 103, 0.2);
+}
+
+/* Texture Overlay (Optional but cool for Lofi) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); /* Light Grain */
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 999;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif; /* Soft rounded font */
+}
+
+body {
+  background-color: var(--bg-lofi);
+  /* Optional: Background image of a lofi room/window (blur it) */
+  background: linear-gradient(135deg, #1a1b26 0%, #24283b 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glassmorphism Card Style */
+.lofi-card {
+  background: var(--card-lofi);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px; /* Extra rounded for the cozy vibe */
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Soft Buttons */
+.btn-lofi {
+  background: var(--primary-soft);
+  color: var(--bg-lofi);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-lofi:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(187, 154, 247, 0.4);
+}
+
+/* Custom Soft Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-soft);
+}
+.Toastify__toast-container {
+  z-index: 9999 !important; /* Taaki ye sabse upar rahe */
+  position: fixed !important; /* Taaki ye window ke hisaab se chale */
+}

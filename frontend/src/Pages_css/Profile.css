@@ -1,0 +1,179 @@
+/* --- Profile Page: Deep Lofi Refined --- */
+.profile-page-unique {
+  --bg-deep: #0f172a;
+  --text-main: #f8fafc;
+  --text-dim: #94a3b8;
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --accent-blue: #7dd3fc;
+  --button-soft: #a5f3fc;
+  --button-hover: #faedcd;
+
+  min-height: 100vh;
+  background-color: var(--bg-deep);
+  background-image: radial-gradient(circle at 50% -20%, #1e293b, #0f172a);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.profile-page-unique .navbar-spacer {
+  height: 80px; /* Space for your fixed Navbar */
+}
+
+.profile-page-unique .profile-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.profile-page-unique .profile-glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  padding: 50px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  position: relative;
+  animation: floatProfile 6s ease-in-out infinite;
+}
+
+@keyframes floatProfile {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Back Link */
+.profile-page-unique .home-link {
+  display: inline-block;
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+  transition: 0.3s ease;
+  opacity: 0.8;
+}
+
+.profile-page-unique .home-link:hover {
+  opacity: 1;
+  transform: translateX(-5px);
+}
+
+/* Header & Avatar */
+.profile-page-unique .avatar-circle {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, var(--button-soft), var(--accent-blue));
+  color: #0f172a;
+  font-size: 2.8rem;
+  font-weight: 800;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  box-shadow: 0 10px 20px rgba(125, 211, 252, 0.2);
+}
+
+.profile-page-unique .profile-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 5px;
+  letter-spacing: -1px;
+}
+
+.profile-page-unique .status-text {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin-bottom: 35px;
+}
+
+/* Form Styling */
+.profile-page-unique .profile-form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.profile-page-unique .input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-page-unique label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  padding-left: 5px;
+}
+
+.profile-page-unique input {
+  width: 100%;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.profile-page-unique input:focus {
+  border-color: var(--accent-blue);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 15px rgba(125, 211, 252, 0.1);
+}
+
+.profile-page-unique .helper-text {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-style: italic;
+  padding-left: 5px;
+}
+
+/* Save Button */
+.profile-page-unique .save-btn {
+  padding: 18px;
+  border-radius: 50px;
+  border: none;
+  background: var(--button-soft);
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.profile-page-unique .save-btn:hover:not(:disabled) {
+  background: var(--button-hover);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.profile-page-unique .save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(1);
+}
+
+/* Footer */
+.profile-page-unique .profile-footer {
+  margin-top: 30px;
+  opacity: 0.5;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
