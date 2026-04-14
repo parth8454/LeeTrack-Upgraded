@@ -32,7 +32,7 @@ const ResetPass = () => {
         setloading(true);
         try {
            
-            const url = "${import.meta.env.VITE_API_URL}/auth/login/reset_pass"; 
+            const url = `${import.meta.env.VITE_API_URL}/auth/login/reset_pass`; 
             const response = await axios.post(url, {
                 email:email,
                 new_Pass: password

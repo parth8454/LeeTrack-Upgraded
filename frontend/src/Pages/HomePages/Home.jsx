@@ -30,7 +30,7 @@ const Home = () => {
 
     const fetchLeaderboard = async() => {
         const token = localStorage.getItem('token');
-        const response = await axios.get('${import.meta.env.VITE_API_URL}/api',{
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api`,{
             headers:{Authorization:token}
         });
         setLeaderboard(response.data);

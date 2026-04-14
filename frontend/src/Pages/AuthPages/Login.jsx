@@ -35,7 +35,7 @@ const Login = () => {
     }
 
         try{
-            const url = "${import.meta.env.VITE_API_URL}/auth/login";
+            const url = `${import.meta.env.VITE_API_URL}/auth/login`;
             const response = await axios.post(url,loginInfo);
             
             const {success,jwtToken,name,email,message,error} = response.data;
