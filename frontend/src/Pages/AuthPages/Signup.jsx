@@ -32,7 +32,7 @@ const Signup = () => {
         navigate('/Signup/verifyOTP',{state:{signupData:signUpInfo}});
       }
     }catch(err){
-      return handleError(`err`);
+      return handleError(err.response.data.message);
     }
   };
 

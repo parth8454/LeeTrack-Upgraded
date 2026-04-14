@@ -41,7 +41,7 @@ const Otpverify = () => {
                 }, 1500);
             }
         } catch (err) {
-            const msg = err.response?.data?.message || "Invalid OTP or Session Expired";
+            const msg = err.response.data.message || "Invalid OTP or Session Expired";
             handleError(msg);
         }
     };
@@ -105,3 +105,4 @@ const Otpverify = () => {
 }
 
 export default Otpverify
+

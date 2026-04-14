@@ -28,7 +28,7 @@ const ResetPassOTP = () => {
                 navigate('/login/reset_pass', { state: { email, otp } });
             }
         } catch (err) {
-            handleError(err.response?.data?.message || "Galat OTP hai!");
+            handleError(err.response.data.message || "Galat OTP hai!");
         } finally {
             setLoading(false);
         }

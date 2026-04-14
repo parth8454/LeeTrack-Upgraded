@@ -26,6 +26,8 @@ const Login = () => {
             return handleError("bhai sari details bhar de😗");
         }
 
+        console.log(loginInfo);
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             setLoading(false);
@@ -61,7 +63,7 @@ const Login = () => {
             console.log(`error : ${err}`);
             
           setLoading(false);
-            return handleError(err);
+            return handleError(err.response.data.message);
           }
 
     };

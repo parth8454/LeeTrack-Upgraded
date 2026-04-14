@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../Components/Navbar';
 import axios from 'axios';
 import '../../Pages_css/Home.css';
-import { handleError } from '../../utils';
+import { handleError, handleSuccess } from '../../utils';
+import { ToastContainer } from 'react-toastify';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Home = () => {
     // 1. State for Sidebar Navigation
@@ -10,7 +12,10 @@ const Home = () => {
     const [lcHandle, setLcHandle] = useState('');
     const [activeTab, setActiveTab] = useState('stats');
     const [leaderboard, setLeaderboard] = useState([]);
+    const [loading,setloading] = useState(false);
     const [data,setdata] = useState({ });
+    const navigate = useNavigate();
+
     
     // 2. State for User Data
     const [user, setUser] = useState('');
@@ -19,7 +24,7 @@ const Home = () => {
         const loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser) {
             setUser(loggedInUser);
-            UpdateStats();
+            UpdateStats();  
         }
     }, []);
 
@@ -34,18 +39,23 @@ const Home = () => {
 
     // request to api and stats fetch
     const UpdateStats = async() =>{
+        setloading(true);
         const Mail = localStorage.getItem('email');
         const token = localStorage.getItem('token');
-        const leetcodeUsername = "n";
+        const information = await axios.get(`http://localhost:9090/api/information/${Mail}`);
+        const leetcodeUsername = information.data.leetcodeUsername;
         const response = await axios.get(`http://localhost:9090/home/${leetcodeUsername}?email=${Mail}`,
                 { headers: { 'Authorization': token } }
             );
-        if(response.data.success){
+            if(response.data.success){
+            handleSuccess("successfully updated stats");
             setdata(response.data.stats);
         }
         else{
+            setloading(false);
             return handleError("bhai kuch dikat agyi");
         }
+        setloading(false);
     }
 
 
@@ -69,13 +79,19 @@ const Home = () => {
                     >
                         <span className="icon">🏆</span> Leaderboard
                     </div>
+                    <div 
+                        className={`side-option ${activeTab === 'About Us' ? 'active' : ''}`} 
+                        onClick={() => navigate('/home/About')}
+                    >
+                        <span className="icon">📚</span> About Us
+                    </div>
                 </aside>
 
                 {/* Main Dynamic Content Area */}
                 <main className="content-area">
                     {activeTab === 'stats' ? (
                         <div className="stats-wrapper">
-                            <h1 className="section-title">Welcome Back, {user} 🕯️</h1>
+                            <h1 className="section-title">Welcome Back, {user} </h1>
                             
                             {/* Floating Glass Card for Stats */}
                             <div className="stats-display-card">
@@ -83,7 +99,7 @@ const Home = () => {
                                     {/* Big Progress Circle Placeholder */}
                                     <div className="circle-progress">
                                         <span className="total-count">{data.totalSolved}</span>
-                                        <span className="sub-text">Solved</span>
+                                        <span className="sub-text">Q Solved</span>
                                     </div>
 
                                     {/* Vertical Stats Detail List */}
@@ -109,14 +125,13 @@ const Home = () => {
                             
                             {/* Action Buttons Row */}
                             <div className="stats-actions">
-                                <button className="action-btn update-btn" onClick={UpdateStats}>Update my Stats</button>
+                                <button className="action-btn update-btn" onClick={UpdateStats}>{loading?"wait...":"Update My Stats"}</button>
                             </div>
                         </div>
                     ) : (
                         <div className="leaderboard-wrapper">
-                            <h1 className="section-title">Global Rankings</h1>
+                            <h1 className="section-title">Class Rankings</h1>
                             
-                            {/* Leaderboard Table in Glass Card */}
                             <div className="table-container">
                                 <table className="leaderboard-table">
                                     <thead>
@@ -124,6 +139,7 @@ const Home = () => {
                                             <th># Rank</th>
                                             <th>Warrior Name</th>
                                             <th>Total Solved</th>
+                                            <th>Points</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -134,6 +150,7 @@ const Home = () => {
                                                 </td>
                                                 <td className="name-cell">{user.name}</td>
                                                 <td className="solved-cell">{user.stats?.totalSolved ?? '—'}</td>
+                                                <td className="solver-cell">{user.stats?.points??'-'}</td>
                                              </tr>
                                              ))}
                                     </tbody>
@@ -143,6 +160,19 @@ const Home = () => {
                     )}
                 </main>
             </div>
+            <ToastContainer 
+                                    position="bottom-left"
+                                    autoClose={2000}
+                                    hideProgressBar={false}
+                                    newestOnTop={false}
+                                    closeOnClick
+                                    rtl={false}
+                                    pauseOnFocusLoss
+                                    draggable
+                                    pauseOnHover                            
+                                    theme="dark" // "dark" ya "light" bhi try kar sakte ho
+                                    limit={1}
+                                    />
         </div>
     );
 };

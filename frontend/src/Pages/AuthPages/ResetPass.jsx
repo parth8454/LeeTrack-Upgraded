@@ -32,18 +32,19 @@ const ResetPass = () => {
         setloading(true);
         try {
            
-            const url = "http://localhost:9090/auth/login/reset_password"; 
+            const url = "http://localhost:9090/auth/login/reset_pass"; 
             const response = await axios.post(url, {
-                email,
+                email:email,
                 new_Pass: password
-            });
+            });     
 
             if (response.data.success) {
                 handleSuccess("Password badal gaya! Ab login karle. 🚀");
                 setTimeout(() => navigate('/login'), 1000);
             }
         } catch (err) {
-            handleError(err.response?.data?.message || "Kuch toh gadbad hai!");
+            handleError(err.response.data.message || "Kuch toh gadbad hai!");
+  
         } finally {
             setloading(false);
         }

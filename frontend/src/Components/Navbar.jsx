@@ -6,7 +6,7 @@ import './Navbar.css';
 const Navbar = () => {
     const [showDropdown, setShowDropdown] = useState(false);
     const navigate = useNavigate();
-    const userName = localStorage.getItem('username') || "User";
+    const userName = localStorage.getItem('loggedInUser') || "User";
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -19,7 +19,7 @@ const Navbar = () => {
         <nav className="navbar">
             
             <div className="nav-left">
-                <span className="badge">LeetTrack 🕯️</span>
+                <span className="badge">LeeTrack </span>
             </div>
 
             <div className="nav-center">

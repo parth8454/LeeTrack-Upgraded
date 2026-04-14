@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import ResetPassOTP from './Pages/AuthPages/ResetPassOTP'
 import Profile from './Pages/HomePages/Profile'
+import About from './Pages/HomePages/About'
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
       <Route path="/login/reset_pass" element={<ResetPass/>}/>
       <Route path="/home" element={<PrivateRoute> <Home /> </PrivateRoute>} />
       <Route path="/home/profile" element={<PrivateRoute> <Profile /> </PrivateRoute>} />
+      <Route path="/home/About" element={<PrivateRoute><About/></PrivateRoute>}/>
 
       
       </Routes>

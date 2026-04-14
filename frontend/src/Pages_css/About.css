@@ -1,0 +1,212 @@
+/* --- About Page: Wide Glassmorphism Theme --- */
+.about-page-unique {
+    --accent-blue: #7dd3fc;
+    --accent-cyan: #a5f3fc;
+    --text-main: #f8fafc; /* Keep pure white for contrast */
+    --text-dim: #cbd5e1; /* Made slightly lighter for readability */
+    
+    /* DARKER GLASS: Increased opacity and dark value to contrast with fire */
+    --glass-bg: rgba(10, 15, 25, 0.75); 
+    --glass-border: rgba(255, 255, 255, 0.12);
+
+    min-height: 100vh;
+    color: var(--text-main);
+    
+    /* FONT TWEAK: Using a cleaner font like Inter for body readability, 
+       but keeping Quicksand for headings if you prefer that mix. 
+       Below is the pure weight tweak for Quicksand. */
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500; /* Increased overall body weight */
+    letter-spacing: 0.02em; /* Subtle spacing improvement */
+    /* --- BG IMAGE SPACE: Add your URL here --- */
+    background-image: url('../../src/assets/wallpaperflare.com_wallpaper\ \(4\)\(1\).jpg') !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;   
+}
+
+.about-page-unique .navbar-spacer {
+    height: 70px;
+}
+
+.about-layout {
+    display: flex;
+    padding: 20px; /* Minimal margin for wide look */
+    gap: 30px;
+    max-width: 1400px; /* Stretch for larger screens */
+    margin: 0 auto;
+}
+
+.about-sidebar {
+    width: 220px;
+    position: sticky;
+    top: 90px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.back-home-btn {
+    display: block;
+    text-align: center;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 800;
+    padding: 12px;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    background: rgba(125, 211, 252, 0.05);
+    margin-bottom: 25px;
+    transition: 0.3s ease;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.back-home-btn:hover {
+    background: var(--accent-blue);
+    color: #0f172a;
+    transform: translateX(-5px);
+}
+
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.side-nav button {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 8px 0;
+}
+
+.side-nav button:hover {
+    color: var(--accent-cyan);
+    padding-left: 8px;
+}
+
+/* Main Content Styling */
+.about-content {
+    flex: 1;
+    padding-bottom: 50px;
+}
+.content-section p {
+    font-size: 1.1rem; /* Slightly larger text */
+    line-height: 1.9; /* More vertical space between lines */
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: var(--accent-cyan);
+    letter-spacing: -2px;
+    /* TITLE SHADOW: Critical for contrast against bright backgrounds */
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.sub-title {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: var(--accent-blue);
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card-text {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    padding: 40px;
+    border-radius: 30px;
+    line-height: 1.9; /* Match body text */
+    font-size: 1.1rem;
+    font-weight: 500; /* Medium weight for better definition */
+    
+    /* Subtle glow from bottom to lift it from fire */
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.6), 
+                0 -5px 30px -15px rgba(125, 211, 252, 0.1); 
+}
+
+.note-text b, .glass-card-text p b {
+    font-weight: 700;
+    color: white; /* Make bold text stand out more */
+}
+
+.highlight-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Glow effect on important lines */
+}
+
+/* Formatting Elements */
+.feature-list, .step-list, .future-list {
+    margin: 15px 0;
+    list-style-position: inside;
+}
+
+.feature-list li, .step-list li {
+    margin-bottom: 10px;
+}
+
+.alert-box {
+    background: rgba(125, 211, 252, 0.1);
+    border-left: 4px solid var(--accent-blue);
+    padding: 12px 20px;
+    margin: 20px 0;
+    font-weight: 700;
+    color: var(--accent-cyan);
+}
+
+/* Scoring Logic Visualization */
+.math-card {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.formula {
+    margin-top: 15px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    border-top: 1px solid var(--glass-border);
+    padding-top: 15px;
+}
+
+.made-by {
+    margin-top: 30px;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.made-by span {
+    color: var(--accent-blue);
+    font-weight: 800;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+/* Responsive Fixes */
+@media (max-width: 1000px) {
+    .about-layout { flex-direction: column; padding: 15px; }
+    .about-sidebar { width: 100%; position: relative; top: 0; margin-bottom: 30px; }
+    .side-nav { display: none; } /* Hide side nav on mobile for cleaner look */
+    .main-title { font-size: 2.4rem; }
+}
