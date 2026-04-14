@@ -21,7 +21,7 @@ const Profile = () => {
         const Mail = localStorage.getItem('email');
         
         try {
-            const response = await axios.get(`http://localhost:9090/home/${leetcodeUsername.trim()}?email=${Mail}`,
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/home/${leetcodeUsername.trim()}?email=${Mail}`,
                 { headers: { 'Authorization': token } }
             );
             localStorage.setItem('leetcodeUsername',leetcodeUsername)

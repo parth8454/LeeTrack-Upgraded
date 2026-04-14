@@ -30,7 +30,7 @@ const Home = () => {
 
     const fetchLeaderboard = async() => {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:9090/api',{
+        const response = await axios.get('${import.meta.env.VITE_API_URL}/api',{
             headers:{Authorization:token}
         });
         setLeaderboard(response.data);
@@ -42,9 +42,9 @@ const Home = () => {
         setloading(true);
         const Mail = localStorage.getItem('email');
         const token = localStorage.getItem('token');
-        const information = await axios.get(`http://localhost:9090/api/information/${Mail}`);
+        const information = await axios.get(`${import.meta.env.VITE_API_URL}/api/information/${Mail}`);
         const leetcodeUsername = information.data.leetcodeUsername;
-        const response = await axios.get(`http://localhost:9090/home/${leetcodeUsername}?email=${Mail}`,
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/home/${leetcodeUsername}?email=${Mail}`,
                 { headers: { 'Authorization': token } }
             );
             if(response.data.success){

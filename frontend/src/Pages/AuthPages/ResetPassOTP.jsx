@@ -20,7 +20,7 @@ const ResetPassOTP = () => {
 
         setLoading(true);
         try {
-            const url = "http://localhost:9090/auth/login/otpverify"; 
+            const url = "${import.meta.env.VITE_API_URL}/auth/login/otpverify"; 
             const response = await axios.post(url, { email, otp });
 
             if (response.data.success) {

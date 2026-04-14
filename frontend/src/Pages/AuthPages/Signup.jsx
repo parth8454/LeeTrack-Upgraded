@@ -24,7 +24,7 @@ const Signup = () => {
 
     try{ 
       
-      const url = "http://localhost:9090/auth/signup";
+      const url = "${import.meta.env.VITE_API_URL}/auth/signup";
       const response = await axios.post(url,signUpInfo);
 
       if(response.status == 200 || response.data.success){

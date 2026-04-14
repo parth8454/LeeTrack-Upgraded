@@ -24,7 +24,7 @@ const Otpverify = () => {
         }
 
         try {
-            const url = "http://localhost:9090/auth/signup/otpverify";
+            const url = "${import.meta.env.VITE_API_URL}/auth/signup/otpverify";
             
             // Sab kuch combine karke bhej rahe hain backend ko
             const finalPayload = { 

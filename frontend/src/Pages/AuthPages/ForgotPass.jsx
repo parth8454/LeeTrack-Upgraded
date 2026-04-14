@@ -19,7 +19,7 @@ const ForgotPass = () => {
     }
 
     try{
-      const url = "http://localhost:9090/auth/login/passRecovery";
+      const url = "${import.meta.env.VITE_API_URL}/auth/login/passRecovery";
       const response = await axios.post(url,{email});
 
       if(response.status == 200 || response.data.success){
