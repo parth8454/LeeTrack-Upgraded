@@ -9,7 +9,8 @@ const sendOTP = async(email,otp) => {
         auth:{
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,            
-        }
+        },
+        family: 4
     });
 const mailOptions = {
     to: email,
@@ -23,13 +24,14 @@ const mailOptions = {
 const send_PassRecovery_OTP = async(email,otp) => {
     const transporter = nodemailer.createTransport({
         service:'gmail',
-        secure:false,
+        secure:true,
         host:'smtp.gmail.com',
-        port:587,
+        port:465,
         auth:{
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,            
-        }
+        },
+        family: 4
     });
 const mailOptions = {
     to: email,
