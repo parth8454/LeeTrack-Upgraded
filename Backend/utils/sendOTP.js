@@ -5,7 +5,7 @@ const sendOTP = async(email,otp) => {
         service:'gmail',
         secure:true,
         host:'smtp.gmail.com',
-        port:465,
+        port:2525,
         auth:{
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,            
@@ -26,7 +26,7 @@ const send_PassRecovery_OTP = async(email,otp) => {
         service:'gmail',
         secure:true,
         host:'smtp.gmail.com',
-        port:465,
+        port:2525,
         auth:{
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,            
