@@ -14,7 +14,7 @@ const port = 9090 || process.env.PORT;
 app.use(bodyparser.json());
 app.use(express.json());
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://lee-track-upgraded.vercel.app",
     methods:['GET','POST','PUT','DELETE'],
     credentials:true
 }));
