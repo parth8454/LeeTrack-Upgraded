@@ -36,6 +36,9 @@ const Signup = () => {
         setloading(false);
         navigate('/Signup/verifyOTP',{state:{signupData:signUpInfo}});
       }
+      if(!response.data.sucess){
+        handleError(response.data.message);
+      }
     }catch(err){
       setloading(false);
       return handleError(err.response.data.message);
