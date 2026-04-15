@@ -8,6 +8,8 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
+  const[loading,setloading] = useState(false);
+
   const [signUpInfo,setsignupInfo] = useState({
     name:'',
     email:'',
@@ -16,9 +18,11 @@ const Signup = () => {
 
   const handleSignup = async(e) => {
     e.preventDefault();
+    setloading(true);
     const {name,email,password} = signUpInfo;
 
     if(!name || !email || !password){
+      setloading(false);
       return handleError("bhai sari details fill kro");
     }
 
@@ -29,9 +33,11 @@ const Signup = () => {
 
       if(response.status == 200 || response.data.success){
         handleSuccess("Bhai Otp bhar tu ab");
+        setloading(false);
         navigate('/Signup/verifyOTP',{state:{signupData:signUpInfo}});
       }
     }catch(err){
+      setloading(false);
       return handleError(err.response.data.message);
     }
   };
@@ -89,8 +95,8 @@ const Signup = () => {
                             />
                         </div>
 
-                        <button type="submit" className="btn-login" style={{background: 'var(--button-soft)'}}>
-                            Sign Up
+                        <button type="submit" className="btn-login" style={{background: 'var(--button-soft)'}} >
+                            {loading?'wait...':'Sign Up'}
                         </button>
 
                         <div className="auth-links">
