@@ -3,9 +3,9 @@ const nodemailer = require('nodemailer');
 const sendOTP = async(email,otp) => {
     const transporter = nodemailer.createTransport({
         service:'gmail',
-        secure:false,
+        secure:true,
         host:'smtp.gmail.com',
-        port:587,
+        port:465,
         auth:{
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,            
