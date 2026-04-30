@@ -1,7 +1,8 @@
 const axios = require('axios');
+const ContestModel = require('../../models/contest');
 const getContestInfo = async() =>{
-    try{
 
+    try{
         const graphQL_URL = 'https://leetcode.com/graphql';
         
         const query = {
@@ -18,19 +19,26 @@ const getContestInfo = async() =>{
 
         const information = {
             contest_one:{
-                "contest name":response.data.data.contestV2UpcomingContests[0].titleSlug,
+            "contest_name":response.data.data.contestV2UpcomingContests[0].titleSlug,
             "start_time":response.data.data.contestV2UpcomingContests[0].startTime,
             "duration":response.data.data.contestV2UpcomingContests[0].duration,
             },
             contest_two:{
-                "contest name":response.data.data.contestV2UpcomingContests[1].titleSlug,
+            "contest_name":response.data.data.contestV2UpcomingContests[1].titleSlug,
             "start_time":response.data.data.contestV2UpcomingContests[1].startTime,
             "duration":response.data.data.contestV2UpcomingContests[1].duration,
             }
         }
-
-
+        try{
+            const newRecord = await ContestModel.create({information:information});
+            return res.status(201).json({ message: "Contests saved", data: newRecord });
+        }catch(error){
+            console.error("Database Save Error:", error);
+            return res.status(500).json({ message: "Failed to save to database", error: error });
+        }
     }catch(err){
-
+        return res.status(500).json({message:"server errorr",error:err});
     }
-}
+};
+
+module.exports = {getContestInfo};
