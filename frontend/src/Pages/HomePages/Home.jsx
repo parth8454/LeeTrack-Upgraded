@@ -24,7 +24,6 @@ const Home = () => {
         const loggedInUser = localStorage.getItem('loggedInUser');
         if (loggedInUser) {
             setUser(loggedInUser);
-            UpdateStats();  
         }
     }, []);
 

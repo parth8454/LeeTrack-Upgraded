@@ -46,7 +46,7 @@ const getLeetCodeStats = async(req,res) => {
             await usermodel.findByIdAndUpdate(req.user._id,{
                 stats:{...stats,lastUpdated : new Date()},
                 leetcodeUsername:UserName,
-            });
+            }); 
         }catch(err){
             console.log(`Stats are not stored in DB    error : ${err}`);
         }
