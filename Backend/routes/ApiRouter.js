@@ -6,6 +6,6 @@ const ApiRouter = require('express').Router();
 
 ApiRouter.get('/',leaderboard)
 ApiRouter.get('/information/:email',information)
-ApiRouter.get('/Contest',getContestInfo);
+ApiRouter.post('/Contest',getContestInfo);
 
 module.exports = ApiRouter;
