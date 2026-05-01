@@ -1,6 +1,6 @@
 const axios = require('axios');
 const ContestModel = require('../../models/contest');
-const getContestInfo = async() =>{
+const ContestTracker = async(req,res) =>{
 
     try{
         const graphQL_URL = 'https://leetcode.com/graphql';
@@ -41,4 +41,4 @@ const getContestInfo = async() =>{
     }
 };
 
-module.exports = {getContestInfo};
+module.exports = ContestTracker;
