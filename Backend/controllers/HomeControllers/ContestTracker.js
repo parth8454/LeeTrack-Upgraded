@@ -30,7 +30,11 @@ const ContestTracker = async(req,res) =>{
             }
         }
         try{
-            const newRecord = await ContestModel.create({information:information});
+            const newRecord = await ContestModel.findOneAndUpdate(
+        {}, 
+        { information: information }, 
+        { upsert: true, new: true, setDefaultsOnInsert: true }
+    );
             return res.status(201).json({ message: "Contests saved", data: newRecord });
         }catch(error){
             console.error("Database Save Error:", error);

@@ -1,297 +1,468 @@
-/* --- Home Page Specific Styles --- */
+/* =========================================================
+   LEETRACK PRO: DARK AURORA EDITION (Perfect Alignment)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Quicksand:wght@500;700&display=swap');
+
 .home-page-unique {
-  /* Variables Moved inside Parent to avoid global leak */
-  --bg-deep: #0f172a;
-  --text-main: #f8fafc;
-  --text-dim: #94a3b8;
-  --glass-bg: rgba(15, 23, 42, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --accent-blue: #7dd3fc;
-  --button-soft: #a5f3fc;
-  --button-hover: #faedcd;
-  --easy-color: #22c55e;
-  --medium-color: #eab308;
-  --hard-color: #ef4444;
+    --bg-base: #06080f;
+    --panel-bg: rgba(13, 17, 28, 0.6);
+    --panel-border: rgba(255, 255, 255, 0.08);
+    --text-primary: #ffffff;
+    --text-secondary: #8b949e;
+    
+    /* Official LeetCode Colors */
+    --lc-easy: #00b8a3;
+    --lc-easy-bg: rgba(0, 184, 163, 0.1);
+    --lc-medium: #ffc01e;
+    --lc-medium-bg: rgba(255, 192, 30, 0.1);
+    --lc-hard: #ff375f;
+    --lc-hard-bg: rgba(255, 55, 95, 0.1);
+    --lc-brand: #ffa116; /* LeetCode Orange */
 
-  /* Basic Setup */
-  height: 100vh;
-  background-color: var(--bg-deep);
-  
-  /* --- ADD YOUR BG IMAGE URL HERE --- */
-   background-image: url('../../src/assets/wallpaperflare.com_wallpaper\ \(2\).jpg') !important;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Parallax effect */
-
-  color: var(--text-main);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  font-family: 'Quicksand', sans-serif;
+    min-height: 100vh;
+    background-color: var(--bg-base);
+    background-image: url('../../src/assets/wallpaperflare.com_wallpaper\ \(2\).jpg') !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
 }
 
-/* All children selectors now prefixed with the unique parent */
+/* Beautiful Vignette Overlay */
+.home-page-unique::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 0%, #000000 120%);
+    z-index: 0;
+    pointer-events: none;
+}
+
 .home-page-unique .main-layout {
     display: flex;
     flex: 1;
-    overflow: hidden;
-    background: transparent; /* Taaki piche ki image dikhe */
+    z-index: 1;
+    height: calc(100vh - 70px); /* Adjust based on navbar height */
 }
 
-/* --- Sidebar Styling --- */
+/* -----------------------------------------
+   1. SIDEBAR NAVIGATION
+----------------------------------------- */
 .home-page-unique .side-panel {
-    width: 280px;
-    background: rgba(15, 23, 42, 0.6); /* Slightly more transparent */
-    backdrop-filter: blur(0px);
-    border-right: 1px solid var(--glass-border);
+    width: 260px;
+    background: rgba(10, 12, 16, 0.7);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid var(--panel-border);
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-
-.home-page-unique .side-option {
-    padding: 16px 24px;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 600;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    color: var(--text-dim);
-    display: flex;
-    align-items: center;
     gap: 12px;
 }
 
+.home-page-unique .side-option {
+    padding: 16px 20px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.3s ease;
+    font-family: 'Quicksand', sans-serif;
+}
+
 .home-page-unique .side-option:hover {
-    color: white;
-    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .home-page-unique .side-option.active {
-    background: var(--glass-bg);
-    color: var(--accent-blue);
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 161, 22, 0.1);
+    color: var(--lc-brand);
+    border: 1px solid rgba(255, 161, 22, 0.2);
+    box-shadow: 0 0 15px rgba(255, 161, 22, 0.1);
 }
 
-/* --- Content Area --- */
+/* -----------------------------------------
+   2. DASHBOARD LAYOUT & ALIGNMENT (The Fix)
+----------------------------------------- */
 .home-page-unique .content-area {
     flex: 1;
-    padding: 60px;
-    overflow-y: auto;
-    background: transparent; /* Removed radial-gradient to show BG image */
-}
-
-.home-page-unique .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    letter-spacing: -1px;
-    color: var(--text-main);
-}
-
-/* --- Stats Card Arrangement --- */
-.home-page-unique .stats-display-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(0px);
-    border: 1px solid var(--glass-border);
-    border-radius: 40px;
     padding: 50px;
-    margin-bottom: 40px;
-    animation: floatLightHome 8s ease-in-out infinite;
+    overflow-y: auto;
 }
 
-@keyframes floatLightHome {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+.home-page-unique .dashboard-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    /* THIS keeps both columns exactly the same height */
+    align-items: stretch; 
+}
+
+/* Title Normalization so left and right match */
+.home-page-unique .section-title,
+.home-page-unique .sub-section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    letter-spacing: -1px;
+    font-family: 'Quicksand', sans-serif;
+    height: 40px; /* Fixed height so grids align perfectly */
+    display: flex;
+    align-items: center;
+}
+
+.home-page-unique .sub-section-title {
+    font-size: 1.6rem;
+}
+
+/* Column Wrappers */
+.home-page-unique .stats-main-wrapper,
+.home-page-unique .contests-side-box {
+    display: flex;
+    flex-direction: column;
+}
+
+/* -----------------------------------------
+   3. STATS CARD (LEFT PANEL)
+----------------------------------------- */
+.home-page-unique .stats-display-card {
+    flex: 1; /* Pushes the button to the bottom, stretches card */
+    background: var(--panel-bg);
+    backdrop-filter: blur(25px);
+    border: 1px solid var(--panel-border);
+    border-radius: 28px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    margin-bottom: 25px; /* Space for the button */
 }
 
 .home-page-unique .stats-info {
     display: flex;
     align-items: center;
-    gap: 60px;
+    justify-content: space-around;
+    gap: 30px;
 }
 
 /* Progress Circle */
 .home-page-unique .circle-progress {
-    width: 160px;
-    height: 160px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    border: 8px solid var(--button-soft);
+    background: radial-gradient(circle, rgba(255, 161, 22, 0.05) 0%, transparent 60%);
+    border: 6px solid rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 30px rgba(165, 243, 252, 0.15);
-    background: rgba(255, 255, 255, 0.02);
+    position: relative;
 }
 
-.home-page-unique .total-count { font-size: 2.8rem; font-weight: 800; color: var(--accent-blue); }
-.home-page-unique .sub-text { font-size: 0.8rem; text-transform: uppercase; opacity: 0.6; letter-spacing: 1px; }
+/* Glowing accent arc */
+.home-page-unique .circle-progress::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 6px solid transparent;
+    border-top-color: var(--lc-brand);
+    border-right-color: var(--lc-brand);
+    transform: rotate(-45deg);
+    filter: drop-shadow(0 0 10px var(--lc-brand));
+}
 
-/* Stats Details */
+.home-page-unique .total-count { font-size: 4rem; font-weight: 800; color: #fff; line-height: 1; }
+.home-page-unique .sub-text { font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+
+/* --- THE FIX: Sexy Difficulty Rows --- */
 .home-page-unique .stats-details {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 15px;
+    flex: 0.8;
 }
 
 .home-page-unique .detail-item {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 15px;
-    font-size: 1.1rem;
-    font-weight: 500;
+    padding: 18px 24px;
+    border-radius: 16px;
+    transition: 0.3s ease;
+    border: 1px solid transparent;
 }
 
-.home-page-unique .dot { width: 12px; height: 12px; border-radius: 50%; }
-.home-page-unique .dot.easy { background: var(--easy-color); box-shadow: 0 0 10px var(--easy-color); }
-.home-page-unique .dot.medium { background: var(--medium-color); box-shadow: 0 0 10px var(--medium-color); }
-.home-page-unique .dot.hard { background: var(--hard-color); box-shadow: 0 0 10px var(--hard-color); }
-
-.home-page-unique .label { width: 80px; color: var(--text-dim); }
-.home-page-unique .value { font-weight: 700; color: white; }
-
-/* --- Buttons --- */
-.home-page-unique .stats-actions {
+.home-page-unique .detail-item .label {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.9rem;
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 10px;
 }
 
-.home-page-unique .action-btn {
-    padding: 16px 35px;
-    border-radius: 50px;
-    font-weight: 700;
+.home-page-unique .detail-item .value {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+/* Easy Tag */
+.home-page-unique .easy-row { background: var(--lc-easy-bg); border-color: rgba(0, 184, 163, 0.2); }
+.home-page-unique .easy-row .label { color: var(--lc-easy); text-shadow: 0 0 15px rgba(0, 184, 163, 0.4); }
+
+/* Medium Tag */
+.home-page-unique .medium-row { background: var(--lc-medium-bg); border-color: rgba(255, 192, 30, 0.2); }
+.home-page-unique .medium-row .label { color: var(--lc-medium); text-shadow: 0 0 15px rgba(255, 192, 30, 0.4); }
+
+/* Hard Tag */
+.home-page-unique .hard-row { background: var(--lc-hard-bg); border-color: rgba(255, 55, 95, 0.2); }
+.home-page-unique .hard-row .label { color: var(--lc-hard); text-shadow: 0 0 15px rgba(255, 55, 95, 0.4); }
+
+/* -----------------------------------------
+   4. CONTEST BOX (RIGHT PANEL)
+----------------------------------------- */
+.home-page-unique .contests-side-box {
+    background: var(--panel-bg);
+    backdrop-filter: blur(25px);
+    border: 1px solid var(--panel-border);
+    border-radius: 28px;
+    padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    margin-top: 25px; /* 👈 Ye box ko navbar se niche push karega */
+}
+
+/* Moving the title inside to align with left title */
+.home-page-unique .contests-side-box .sub-section-title {
+    margin-top: 0; /* 👈 Purana negative margin hata diya */
+    margin-bottom: 25px;
+}
+
+.home-page-unique .contests-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+}
+
+.home-page-unique .contest-item-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 22px;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: none;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-}
-
-.home-page-unique .update-btn { background: var(--button-soft); color: #0f172a; }
-.home-page-unique .update-btn:hover { background: var(--button-hover); transform: translateY(-3px); }
-
-.home-page-unique .fill-btn { background: transparent; color: var(--accent-blue); border: 1px solid var(--glass-border); }
-.home-page-unique .fill-btn:hover { background: rgba(255, 255, 255, 0.05); }
-
-/* --- Leaderboard Table --- */
-.home-page-unique .table-container {
-    background: var(--glass-bg);
-    border-radius: 30px;
-    border: 1px solid var(--glass-border);
-    padding: 25px;
+    position: relative;
     overflow: hidden;
 }
 
-.home-page-unique .leaderboard-table {
-    width: 100%;
-    border-collapse: collapse;
+.home-page-unique .contest-item-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
+.home-page-unique .contest-tag {
+    background: var(--text-primary);
+    color: #000;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 12px;
+}
 
-.home-page-unique .leaderboard-table th {
-    text-align: left;
-    padding: 15px;
-    color: var(--text-dim);
+.home-page-unique .contest-item-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.home-page-unique .contest-date {
     font-size: 0.85rem;
-    border-bottom: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    margin-bottom: 14px;
 }
 
-.home-page-unique .leaderboard-table td {
-    padding: 20px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    color: var(--text-main);
-}
-
-.home-page-unique .rank-cell { font-weight: 800; font-size: 1.1rem; }
-.home-page-unique .name-cell { color: var(--accent-blue); font-weight: 600; }
-.home-page-unique .solved-cell { font-weight: 700; }
-
-/* Modal Overlay (Background Blur) */
-.home-page-unique .modal-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(8px);
+.home-page-unique .reg-text {
+    font-size: 0.85rem;
+    color: var(--lc-brand);
+    font-weight: 700;
     display: flex;
     align-items: center;
-    justify-content: center;
-    z-index: 1000;
+    gap: 5px;
 }
 
-/* Modal Box */
-.home-page-unique .modal-content {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    padding: 40px;
-    border-radius: 30px;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-    animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.home-page-unique .modal-content h3 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    color: var(--accent-blue);
-}
-
-.home-page-unique .modal-content p {
-    color: var(--text-dim);
-    margin-bottom: 25px;
-    font-size: 0.9rem;
-}
-
-/* Input inside Modal */
-.home-page-unique .modal-content input {
-    width: 100%;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
-    border-radius: 15px;
-    color: white;
-    margin-bottom: 25px;
-    outline: none;
-}
-
-.home-page-unique .modal-content input:focus {
-    border-color: var(--accent-blue);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-/* Modal Buttons */
-.home-page-unique .modal-actions {
-    display: flex;
-    gap: 15px;
-}
-
-.home-page-unique .modal-actions button {
-    flex: 1;
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: 700;
-    cursor: pointer;
+/* -----------------------------------------
+   5. ACTION BUTTONS & LEADERBOARD
+----------------------------------------- */
+.home-page-unique .update-btn {
+    background: var(--text-primary);
+    color: #000;
     border: none;
-    transition: 0.3s;
+    padding: 18px 0;
+    width: 100%;
+    border-radius: 18px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.home-page-unique .cancel-btn {
-    background: transparent;
-    color: var(--text-dim);
-    border: 1px solid var(--glass-border) !important;
+.home-page-unique .update-btn:hover {
+    background: var(--lc-brand);
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(255, 161, 22, 0.4);
+    transform: scale(1.02);
 }
 
-.home-page-unique .confirm-btn {
-    background: var(--button-soft);
-    color: #0f172a;
+/* Leaderboard Overhaul */
+.home-page-unique .table-container {
+    background: var(--panel-bg);
+    backdrop-filter: blur(25px);
+    border: 1px solid var(--panel-border);
+    border-radius: 28px;
+    padding: 30px;
 }
 
-.home-page-unique .confirm-btn:hover {
-    background: var(--button-hover);
+.home-page-unique .leaderboard-table { width: 100%; border-collapse: collapse; }
+.home-page-unique .leaderboard-table th { 
+    text-align: left; 
+    padding: 15px 20px; 
+    color: var(--text-secondary); 
+    font-weight: 600;
+    border-bottom: 1px solid var(--panel-border); 
+}
+.home-page-unique .leaderboard-table td { 
+    padding: 20px; 
+    border-bottom: 1px solid rgba(255,255,255,0.02); 
+    font-weight: 500;
+}
+.home-page-unique .name-cell { color: var(--text-primary); font-weight: 700; font-size: 1.05rem; }
+.home-page-unique .solved-cell { color: var(--lc-brand); font-weight: 800; }
+
+/* Responsive Grid */
+@media (max-width: 1100px) {
+    .home-page-unique .dashboard-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .home-page-unique .contests-side-box .sub-section-title {
+        margin-top: 0;
+    }
+}
+
+/* =========================================================
+   6. NAVBAR TRANSPARENCY OVERRIDE
+   ========================================================= */
+/* Ensure your Navbar component has the class "navbar" */
+.home-page-unique .navbar,
+.home-page-unique nav {
+    background: rgba(0, 0, 0, 0.1) !important; /* Almost invisible */
+    backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: none !important;
+}
+
+/* =========================================================
+   7. COOL ENTRY ANIMATIONS (KEYFRAMES)
+   ========================================================= */
+@keyframes slideUpFade {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideRightFade {
+    0% { opacity: 0; transform: translateX(-30px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseRing {
+    0% { filter: drop-shadow(0 0 5px var(--lc-brand)); }
+    50% { filter: drop-shadow(0 0 20px var(--lc-brand)); }
+    100% { filter: drop-shadow(0 0 5px var(--lc-brand)); }
+}
+
+/* =========================================================
+   8. APPLYING ANIMATIONS TO STATS & CONTESTS
+   ========================================================= */
+/* Dashboard blocks sliding up */
+.home-page-unique .stats-main-wrapper {
+    animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.home-page-unique .contests-side-box {
+    opacity: 0; /* Starts hidden */
+    animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.2s; /* Loads slightly after stats */
+}
+
+/* Animated Ring Pulsing */
+.home-page-unique .circle-progress::before {
+    animation: rotateRing 4s linear infinite, pulseRing 2s ease-in-out infinite !important;
+}
+
+/* Staggered Difficulty Rows loading one by one */
+.home-page-unique .detail-item {
+    opacity: 0;
+    animation: slideRightFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.home-page-unique .easy-row   { animation-delay: 0.3s; }
+.home-page-unique .medium-row { animation-delay: 0.4s; }
+.home-page-unique .hard-row   { animation-delay: 0.5s; }
+
+/* Contest cards staggered fade */
+.home-page-unique .contest-item-card {
+    opacity: 0;
+    animation: slideRightFade 0.5s forwards;
+}
+.home-page-unique .contest-item-card:nth-child(1) { animation-delay: 0.4s; }
+.home-page-unique .contest-item-card:nth-child(2) { animation-delay: 0.5s; }
+.home-page-unique .contest-item-card:nth-child(3) { animation-delay: 0.6s; }
+
+/* =========================================================
+   9. APPLYING ANIMATIONS TO LEADERBOARD
+   ========================================================= */
+.home-page-unique .leaderboard-wrapper {
+    animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Sexy Hover & Entry for Leaderboard Rows */
+.home-page-unique .leaderboard-table tbody tr {
+    opacity: 0;
+    animation: slideRightFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+/* Staggered loading for the top warriors */
+.home-page-unique .leaderboard-table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.home-page-unique .leaderboard-table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.home-page-unique .leaderboard-table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.home-page-unique .leaderboard-table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+.home-page-unique .leaderboard-table tbody tr:nth-child(5) { animation-delay: 0.5s; }
+.home-page-unique .leaderboard-table tbody tr:nth-child(n+6) { animation-delay: 0.6s; }
+
+/* Hover highlight on Leaderboard rows */
+.home-page-unique .leaderboard-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateX(10px);
+    border-left: 3px solid var(--lc-brand);
 }
